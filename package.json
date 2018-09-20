@@ -1,0 +1,8 @@
+{
+  "name": "movie_search_backend",
+  "version": "1.0.0",
+  "description": "Movie Search Site Backend (Node.js)",
+  "main": "index.js",
+  "author": "Felonius Gru <new-comet-dev@outlook.com>",
+  "license": "MIT"
+}
