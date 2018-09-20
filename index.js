@@ -5,6 +5,8 @@ const app = express();
 
 const path = require('path');
 
+const route = require('./route/index');
+
 // Server
 const HOST = '127.0.0.1';
 const PORT = process.env.PORT || 3000;
@@ -14,6 +16,9 @@ const FRONTEND_BUILD_PATH = path.join(__dirname, './frontend/build');
 
 // static files
 app.use(express.static(FRONTEND_BUILD_PATH));
+
+// api route
+app.use('/api', route);
 
 // return the React app
 app.get('*', (req, res) => {
