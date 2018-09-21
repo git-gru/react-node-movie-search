@@ -1,0 +1,17 @@
+.poster-item {
+    margin: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+    img {
+        width: 100%;
+        height: 250px;
+        margin-bottom: 15px;
+    }
+
+    span {
+        text-align: center;
+    }
+}
