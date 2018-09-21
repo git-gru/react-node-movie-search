@@ -1,0 +1,27 @@
+@import '../../styles/responsive';
+
+.posters-view {
+    padding: 50px;
+
+    .search-input {
+        width: 200px;
+        height: 30px;
+        margin-left: 10px;
+    }
+
+    .posters-list {
+        margin-top: 15px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .poster-container {
+        width: 50%;
+
+        @include respond-from(md) {
+            width: (100% / 3);
+        }
+    }
+}

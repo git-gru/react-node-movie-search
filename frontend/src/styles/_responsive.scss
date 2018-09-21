@@ -1,0 +1,9 @@
+@import './breakpoints';
+
+@mixin respond-from($size) {
+    @if $size==md {
+        @media (min-width: $screen-md) {
+            @content;
+        }
+    }
+}
