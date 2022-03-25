@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import { postersReducer } from './posters';
+import { combineReducers } from "redux";
+import { postersReducer } from "./posters";
 
 const reducers = combineReducers({
-    posters: postersReducer,
+  posters: postersReducer,
 });
 
 export default reducers;
