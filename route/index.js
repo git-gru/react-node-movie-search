@@ -11,8 +11,6 @@ var poster = require("../modules/posters");
 router.get("/search", async (req, res) => {
   const { keyword } = req.query;
 
-  res.set("Content-Type", "application/json");
-
   if (!keyword) {
     res.status(400).json({ message: "Invalid Request! Keyword is missing!" });
   }
