@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "../../build/styles/components/posters-list/style.css";
+import "./style.scss";
 import PosterItem from "../poster-item";
 
 class PostersList extends Component {

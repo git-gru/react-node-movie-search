@@ -1,5 +1,5 @@
 import React from "react";
-import "../../build/styles/components/poster-item/style.css";
+import "./style.scss";
 
 const PosterItem = ({ title, url }) => (
   <div className="poster-item">
