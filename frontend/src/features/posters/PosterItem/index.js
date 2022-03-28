@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.scss";
 
-const PosterItem = ({ title, url }) => (
+export const PosterItem = ({ title, url }) => (
   <div className="poster-item">
     <img
       src={
@@ -14,5 +14,3 @@ const PosterItem = ({ title, url }) => (
     <span>{title}</span>
   </div>
 );
-
-export default PosterItem;

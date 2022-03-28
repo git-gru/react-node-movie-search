@@ -1,16 +1,13 @@
-import { Provider } from "react-redux";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 
-import PostersListContainer from "./containers/posters-list";
+import PostersList from "./features/posters/PostersList";
 
-const App = ({ store }) => (
-  <Provider store={store}>
-    <Router>
-      <Routes>
-        <Route path="/" element={PostersListContainer} />
-      </Routes>
-    </Router>
-  </Provider>
+const App = () => (
+  <Router>
+    <Routes>
+      <Route path="/" element={<PostersList />} />
+    </Routes>
+  </Router>
 );
 
 export default App;
