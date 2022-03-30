@@ -10,6 +10,11 @@ const initialState = {
 export const postersSlice = createSlice({
   name: "posters",
   initialState,
+  reducers: {
+    postersEmptied: (state) => {
+      state.posters = [];
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchPosters.pending, (state, action) => {
@@ -17,7 +22,7 @@ export const postersSlice = createSlice({
       })
       .addCase(fetchPosters.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.posters = state.posters.concat(action.payload);
+        state.posters = action.payload;
       })
       .addCase(fetchPosters.rejected, (state, action) => {
         state.status = "failed";
@@ -30,10 +35,12 @@ export const fetchPosters = createAsyncThunk(
   "posters/fetchPosters",
   async (keyword) => {
     const response = await sendRequest(`/api/search?keyword=${keyword}`);
-    return response.data;
+    return response.data.posters;
   }
 );
 
 export const selectAllPosters = (state) => state.posters.posters;
+
+export const { postersEmptied } = postersSlice.actions;
 
 export default postersSlice.reducer;
