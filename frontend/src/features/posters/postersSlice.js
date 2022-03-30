@@ -14,6 +14,9 @@ export const postersSlice = createSlice({
     postersEmptied: (state) => {
       state.posters = [];
     },
+    statusReset: (state) => {
+      state.status = "idle";
+    },
   },
   extraReducers(builder) {
     builder
@@ -41,6 +44,6 @@ export const fetchPosters = createAsyncThunk(
 
 export const selectAllPosters = (state) => state.posters.posters;
 
-export const { postersEmptied } = postersSlice.actions;
+export const { postersEmptied, statusReset } = postersSlice.actions;
 
 export default postersSlice.reducer;
