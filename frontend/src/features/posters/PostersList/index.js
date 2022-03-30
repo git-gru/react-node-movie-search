@@ -5,7 +5,6 @@ import {
   selectAllPosters,
   fetchPosters,
   postersEmptied,
-  statusReset,
 } from "../postersSlice";
 import { PosterItem } from "../PosterItem";
 
@@ -16,20 +15,16 @@ export const PostersList = () => {
   const dispatch = useDispatch();
   const posters = useSelector(selectAllPosters);
 
-  const postersStatus = useSelector((state) => state.posters.status);
-
   useEffect(() => {
     if (debouncedKeyword) {
-      if (postersStatus === "idle") {
-        dispatch(fetchPosters(debouncedKeyword));
-      }
+      dispatch(fetchPosters(debouncedKeyword));
     } else {
       dispatch(postersEmptied());
     }
-  }, [debouncedKeyword, postersStatus, dispatch]);
+  }, [debouncedKeyword, dispatch]);
 
   const renderedPosters = posters.map((poster) => (
-    <div className="poster-container">
+    <div key={poster.imdbID} className="poster-container">
       <PosterItem title={poster.Title} url={poster.Poster} />
     </div>
   ));
@@ -52,13 +47,11 @@ export const PostersList = () => {
 function useDebounce(value, delay) {
   // State and setters for debounced value
   const [debouncedValue, setDebouncedValue] = useState(value);
-  const dispatch = useDispatch();
   useEffect(
     () => {
       // Update debounced value after delay
       const handler = setTimeout(() => {
         setDebouncedValue(value);
-        dispatch(statusReset());
       }, delay);
       // Cancel the timeout if value changes (also on delay change or unmount)
       // This is how we prevent debounced value from updating if value is changed ...
@@ -67,7 +60,7 @@ function useDebounce(value, delay) {
         clearTimeout(handler);
       };
     },
-    [value, delay, dispatch] // Only re-call effect if value or delay changes
+    [value, delay] // Only re-call effect if value or delay changes
   );
   return debouncedValue;
 }
